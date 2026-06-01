@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EW Final Theory Exam Ultimate Study Guide</title>
+    <style>
+        /* --- CORE DESIGN SYSTEM --- */
+        :root {
+            --primary-color: #1e3a8a; /* Deep Navy Blue */
+            --secondary-color: #475569; /* Slate Gray */
+            --accent-color: #2563eb; /* Royal Blue */
+            --bg-light: #f8fafc; /* Crisp Background */
+            --bg-white: #ffffff;
+            --text-dark: #0f172a;
+            --border-color: #e2e8f0;
+            --success-color: #16a34a;
+            --danger-color: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            display: flex;
+        }
+
+        /* --- STICKY SIDEBAR NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        nav h2 {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-bottom: 1rem;
+        }
+
+        nav ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-white);
+            padding-left: 1.25rem;
+        }
+
+        /* --- MAIN CONTENT CONTAINER --- */
+        main {
+            margin-left: 280px;
+            flex: 1;
+            padding: 3rem;
+            max-width: 1100px;
+            width: calc(100% - 280px);
+        }
+
+        /* --- TOP AUTHORSHIP BANNER --- */
+        .author-tag {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-left: 4px solid #0284c7;
+        }
+
+        .header-banner {
+            background-color: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .header-banner h1 {
+            color: var(--primary-color);
+            font-size: 2.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-banner p {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        /* --- GENERAL HTML ELEMENTS & HIERARCHY --- */
+        section {
+            background-color: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            color: #000000;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 2rem 0;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- TABLES & CARDS --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: var(--bg-white);
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        /* --- BLOCKQUOTES & EXAMPLES --- */
+        blockquote {
+            background-color: #f1f5f9;
+            border-left: 5px solid var(--secondary-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .example-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .bad-example {
+            background-color: #fef2f2;
+            border: 1px solid #fca5a5;
+            padding: 1.25rem;
+            border-radius: 6px;
+        }
+
+        .good-example {
+            background-color: #f0fdf4;
+            border: 1px solid #86efac;
+            padding: 1.25rem;
+            border-radius: 6px;
+        }
+
+        .example-header {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .bad-example .example-header { color: var(--danger-color); }
+        .good-example .example-header { color: var(--success-color); }
+
+        /* --- INTERACTIVE MOCKUP TEMPLATES --- */
+        .visual-mockup {
+            background-color: #ffffff;
+            border: 2px dashed #94a3b8;
+            padding: 2.5rem;
+            font-family: monospace, Courier, monospace;
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.5;
+            margin: 1.5rem 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            text-align: left;
+        }
+
+        .mockup-line {
+            margin-bottom: 1rem;
+            padding: 0.25rem 0;
+        }
+
+        .mockup-highlight {
+            background-color: #f1f5f9;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 0.5rem;
+            font-style: italic;
+        }
+
+        /* --- VOCABULARY TAGS --- */
+        .vocab-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tag-pos {
+            background-color: #dcfce7;
+            color: #15803d;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .tag-neg {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            body { flex-direction: column; }
+            nav { position: relative; width: 100%; height: auto; padding: 1.5rem; }
+            main { margin-left: 0; width: 100%; padding: 1.5rem; }
+            .example-box { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h2>Exam Guide</h2>
+        <ul>
+            <li><a href="#topic1">1. 7Cs (Completeness & Correctness)</a></li>
+            <li><a href="#topic2">2. Letter Writing (Full Block)</a></li>
+            <li><a href="#topic3">3. Persuasive Messages</a></li>
+            <li><a href="#topic4">4. Product Review Writing</a></li>
+            <li><a href="#topic5">5. Negotiation Skills</a></li>
+            <li><a href="#topic6">6. Employment Interviews</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="author-tag">Drafted by: M.Haroon 2H BCS</div>
+
+        <div class="header-banner">
+            <h1> - Expository Writing - </h1>
+            <p>Ultimate Interactive Final Theory Exam Study Guide • Expert Compilation</p>
+        </div>
+
+        <section id="topic1">
+            <h2>1. The 7Cs of Communication (Completeness &amp; Correctness Only)</h2>
+            
+            <h3>Completeness</h3>
+            <p><strong>Definition:</strong> A business message is complete when it contains all the facts that the reader or listener needs for the exact reaction you desire. Communicators must remember that backgrounds and mindsets differ; what seems clear to the sender might be entirely inadequate for a receiver without adequate context.</p>
+            
+            <blockquote>
+                <strong>Guidelines for Completeness:</strong><br>
+                1. <strong>Provide all necessary information:</strong> Ensure every factual detail required to safely execute a task is explicitly stated.<br>
+                2. <strong>Answer all questions asked:</strong> Intentionally map and return an explicit answer to every user query.<br>
+                3. <strong>Give something extra when desirable:</strong> Anticipate downstream roadblocks and provide proactive secondary solutions.
+            </blockquote>
+
+            <div class="example-box">
+                <div class="bad-example">
+                    <div class="example-header">Bad Example (Incomplete)</div>
+                    Hi everyone,<br>
+                    I just wanted to send you all a reminder about the meeting we're having tomorrow! See you then,
+                </div>
+                <div class="good-example">
+                    <div class="example-header">Good Example (Complete)</div>
+                    Hi everyone,<br>
+                    I just wanted to remind you about tomorrow's meeting on the new telecommuting policies. The meeting will be at 10:00 a.m. in the second-level conference room. Please let me know if you can't attend.<br>
+                    See you then,
+                </div>
+            </div>
+
+            <h3>Course Slide Exercises</h3>
+            <p><strong>Exercise 1:</strong> The owner of a mutual fund stock wrote to the investment department of your bank, asking: <em>"Just how does your bank want me to authorize this sale?"</em></p>
+            <p><strong>Resolution Framework (5 Ws + 1 H):</strong> Your dynamic reply must outline: <strong>Who</strong> authorizes it (the account holder), <strong>What</strong> form is signed, <strong>Where</strong> to submit it, <strong>When</strong> it must arrive, <strong>Why</strong> validation is required, and <strong>How</strong> signatures are verified (e.g., via notary verification or secure portal upload).</p>
+
+            <p><strong>Exercise 2:</strong> An out-of-town member writes: <em>"I think I would like to attend my first meeting of the association, even though I am not acquainted with your city. Will you please tell me where the next meeting is being held?"</em></p>
+            <p><strong>Resolution Framework:</strong> To make this complete, do not just name the venue. Provide the precise venue name, street address, map directions, nearby hotel options, parking arrangements, schedule timing, and contact coordinates.</p>
+
+            <hr>
+
+            <h3>Correctness</h3>
+            <p><strong>Definition:</strong> At the core of correctness is proper grammar, punctuation, and spelling. However, a business message is truly correct when it characteristics absolute factual precision, uses a proper level of language, and guarantees checking of all verified data metrics before transmission.</p>
+            
+            <blockquote>
+                <strong>Core Rules of Correctness:</strong><br>
+                * <strong>Use the right level of language:</strong> Balance formal syntax against casual settings; never cross into slang or clinical terminology unless context requires it.<br>
+                * <strong>Check accuracy of facts, figures, and words:</strong> A single misstated figure destroys transactional trust immediately.<br>
+                * <strong>Maintain precision:</strong> Avoid ambiguity by defining names, numbers, and deadlines clearly.
+            </blockquote>
+        </section>
+
+        <section id="topic2">
+            <h2>2. Letter Writing (Full Block Format)</h2>
+            <p><strong>Structural Rules:</strong> In <strong>Full Block Format</strong>, every single textual element is strictly <strong>left-aligned</strong> to the margin. There is absolute <strong>zero paragraph indentation</strong>. Individual paragraphs are neatly divided using clean <strong>double-space line breaks</strong> to ensure high executive legibility.</p>
+            
+            <div class="visual-mockup">
+                <div class="mockup-line">[SENDER'S COMPANY NAME / LETTERHEAD]<br>123 Corporate Boulevard<br>Tech Suite 400</div>
+                <div class="mockup-line">June 1, 2026</div>
+                <div class="mockup-line">[INSIDE ADDRESS]<br>Mr. Jonathan Doe<br>Director of Operations<br>Acme Logistics Inc.<br>789 Supply Chain Way</div>
+                <div class="mockup-line">Dear Mr. Doe:</div>
+                <div class="mockup-line mockup-highlight">[BODY PARAGRAPH 1 - NO INDENTATION]<br>This paragraph contains the primary objective of the letter, introducing the core topic immediately. Notice that every sentence begins flush against the strict left border with zero spaces inside.</div>
+                <div class="mockup-line mockup-highlight">[BODY PARAGRAPH 2 - NO INDENTATION]<br>This second paragraph expands on the supporting transactional facts, figures, or necessary chronological context. A uniform double-space separates it clearly from the preceding block text.</div>
+                <div class="mockup-line">Sincerely,</div>
+                <div class="mockup-line">[SENDER'S SIGNATURE]</div>
+                <div class="mockup-line">Jane Smith<br>VP of Client Success</div>
+            </div>
+        </section>
+
+        <section id="topic3">
+            <h2>3. Persuasive Messages</h2>
+            <p><strong>Definition:</strong> Communications strategically structured to systematically influence an audience’s attitudes, core beliefs, or outward behavioral patterns to convince recipients to voluntarily adopt a specific viewpoint or take targeted execution paths.</p>
+            
+            <h3>Key Elements &amp; Rhetorical Techniques</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technique / Element</th>
+                        <th>Core Concept &amp; Academic Definition</th>
+                        <th>Practical Business Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ethos (Credibility)</strong></td>
+                        <td>Establishes critical audience trust through certified expertise, verified reputation, or profound ethical alignment.</td>
+                        <td>"A board-certified medical specialist endorsing a health supplement to explicitly validate safety protocols."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pathos (Emotion)</strong></td>
+                        <td>Appeals deeply to visceral human emotions like empathy, shared joy, protective fear, or community pride to spark connection.</td>
+                        <td>"A localized nonprofit organization showing vulnerable imagery of families in need to encourage structural donations."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Logos (Logic)</strong></td>
+                        <td>Deploys objective data, empirical facts, analytical research studies, and strict rational evidence frameworks to back claims.</td>
+                        <td>"An enterprise software engineering firm citing independent speed metrics showing a 40% gain in runtime efficiency."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Social Proof</strong></td>
+                        <td>Leverages validation concepts by highlighting that broad public peers or market experts actively adopt this route.</td>
+                        <td>"Highlighting that over 50,000 active global tech companies rely daily on this custom integration suite."</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Common Logical Fallacies (Must Avoid)</h3>
+            <div class="grid-layout">
+                <div class="card">
+                    <h4>Slippery Slope</h4>
+                    <p>Falsely claiming a minor choice triggers a major, catastrophic sequence without logical steps.</p>
+                    <p><em>Example:</em> "If we give students calculators, soon they won’t learn math at all."</p>
+                </div>
+                <div class="card">
+                    <h4>Bandwagon Appeal</h4>
+                    <p>Arguing an action is correct simply because a vast majority of people are currently doing it.</p>
+                    <p><em>Example:</em> "Everyone is switching to this brand, so it must be the best."</p>
+                </div>
+                <div class="card">
+                    <h4>Hasty Generalization</h4>
+                    <p>Drawing sweeping conclusions using thin, unrepresentative, or localized evidence patches.</p>
+                    <p><em>Example:</em> "My neighbor got sick after eating at that restaurant, so it must be unsafe."</p>
+                </div>
+                <div class="card">
+                    <h4>Appeal to Emotion</h4>
+                    <p>Manipulating feel-good sentiments or raw anxieties instead of introducing objective, logical reasoning elements.</p>
+                    <p><em>Example:</em> "If you don’t buy this product, you don’t care about your family’s safety."</p>
+                </div>
+                <div class="card">
+                    <h4>Post Hoc (False Cause)</h4>
+                    <p>Incorrectly assuming that because event B occurred directly after event A, event A explicitly caused it.</p>
+                    <p><em>Example:</em> "I wore my lucky socks, and we won the game—so the socks caused the win."</p>
+                </div>
+                <div class="card">
+                    <h4>Circular Reasoning</h4>
+                    <p>Using the basic premise as the actual conclusion to support itself without proving anything new.</p>
+                    <p><em>Example:</em> "This policy is the best because it’s better than all the others."</p>
+                </div>
+                <div class="card">
+                    <h4>Red Herring</h4>
+                    <p>Introducing an entirely disconnected, sensationalist point to distract attention from the core issue.</p>
+                    <p><em>Example:</em> "Why worry about pollution when there are people who don’t have jobs?"</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="topic4">
+            <h2>4. Product Review Writing</h2>
+            <p><strong>The Core Philosophy (Paul Barrs):</strong> Step one is picking a high-value, winning product. To establish real credibility, drop in budget-tier or entry-level product reviews from time to time so readers know you are honest and not simply trying to fleece them.</p>
+
+            <h3>The Strategic Outline Structure</h3>
+            <ul>
+                <li><strong>Know the Target Reader:</strong> Deeply analyze the demographic marketplace and tailor arguments to match group expectations.</li>
+                <li><strong>Title Framework:</strong> Always format exactly as: <code>Product Name: Product Review by [Your Qualifications to Review]</code> for clear search engine layout identification.</li>
+                <li><strong>Introduction:</strong> State a clear overview/opinion, outlining whether your assessment is ultimately positive or negative.</li>
+            </ul>
+
+            <blockquote>
+                <strong>GCSE Writing Top Tips:</strong><br>
+                * <strong>Stay Focused:</strong> Constantly weigh your target product's value parameters against competitor items.<br>
+                * <strong>Use Parenthesis:</strong> Drop extra commentary inside brackets <em>(like this quick aside)</em> to emphasize personal viewpoint authenticity.<br>
+                * <strong>Think about your Tone:</strong> Confide directly and intimately in the reader to build immediate interpersonal trust.<br>
+                * <strong>Rhetorical Questions:</strong> Ask directed questions and structure answers so your product feels like the only viable option.
+            </blockquote>
+
+            <h3>Academic Vocabulary Lists</h3>
+            <p><strong>Positive Tone Tags:</strong></p>
+            <div class="vocab-container">
+                <span class="tag-pos">interesting</span><span class="tag-pos">vivid</span><span class="tag-pos">engaging</span>
+                <span class="tag-pos">colourful</span><span class="tag-pos">imaginative</span><span class="tag-pos">captivating</span>
+                <span class="tag-pos">mesmerizing</span><span class="tag-pos">fascinating</span><span class="tag-pos">remarkable</span>
+                <span class="tag-pos">inventive</span>
+            </div>
+            <p><strong>Negative Tone Tags:</strong></p>
+            <div class="vocab-container">
+                <span class="tag-neg">dull</span><span class="tag-neg">bland</span><span class="tag-neg">dreary</span>
+                <span class="tag-neg">tedious</span><span class="tag-neg">uninspiring</span><span class="tag-neg">lackluster</span>
+                <span class="tag-neg">tired</span><span class="tag-neg">superficial</span><span class="tag-neg">awkward</span>
+                <span class="tag-neg">uncomfortable</span><span class="tag-neg">embarrassing</span><span class="tag-neg">painful</span>
+            </div>
+
+            <h3>Visual Sample Mockup: Product Review Format</h3>
+            <div class="visual-mockup" style="font-family: Arial, sans-serif;">
+                <div style="font-size: 1.4rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.25rem;">
+                    Zenith X500 Noise-Cancelling Headphones: Product Review by an Audio Engineer
+                </div>
+                <div style="color: var(--secondary-color); font-size: 0.85rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                    Published in Tech-Pulse Magazine • Target Audience: Audio Enthusiasts &amp; Students
+                </div>
+                
+                <p><strong>Introduction &amp; Core Viewpoint:</strong><br>
+                Are you tired of losing your focus in noisy public study environments? The newly released Zenith X500 claims to offer studio-grade silencing properties, and after testing them extensively for a week, my definitive verdict is highly positive. This is an absolutely <strong>captivating</strong> piece of technology that sets a remarkable milestone for entry-level consumer electronics.</p>
+
+                <p><strong>Comparative Analysis &amp; Focus:</strong><br>
+                When weighed up against its closest competitor <em>(the budget-tier SoundBlast 200)</em>, the Zenith X500 delivers significantly cleaner acoustics. While the SoundBlast feels uninspiring and produces a somewhat <strong>bland</strong> bass profile, the Zenith tracks sound frequencies with <strong>vivid</strong>, <strong>inventive</strong> audio dynamics. Why settle for low-grade sound reproduction when you can experience studio fidelity at nearly the same cost? Choosing the X500 seems like the only logical option for anyone serious about sound isolation.</p>
+
+                <p><strong>The Final Recommendation:</strong><br>
+                To be completely honest, the headband adjustments can feel slightly <strong>awkward</strong> during prolonged wear. However, the sheer power of its active noise cancellation more than makes up for minor physical gripes. I highly recommend investing in this model before the current promotional tier ends.</p>
+            </div>
+        </section>
+
+        <section id="topic5">
+            <h2>5. Negotiation Skills</h2>
+            <p><strong>Definition:</strong> Back-and-forth communication designed to reach an agreement when you and the other side have some interests that are shared and others that are opposed. It serves as an interpersonal decision-making process required whenever we cannot achieve our objectives single-handedly.</p>
+
+            <h3>Core Principles &amp; Elements</h3>
+            <ul>
+                <li><strong>Interdependence vs. Positions:</strong> Positions are what people say they want. Interests are <em>why</em> they want it. Focus entirely on underlying interests to uncover mutual gain options.</li>
+                <li><strong>BATNA:</strong> <em>Best Alternative to a Negotiated Agreement</em>. This represents your ultimate source of leverage and walk-away power. Always calculate and strengthen your BATNA before coming to the negotiation table.</li>
+            </ul>
+
+            <h3>The Three Dynamics of Negotiation Conversations</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Conversation Dynamic</th>
+                        <th>Strategic Matrix &amp; Characteristics</th>
+                        <th>Behavioral Outcome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Win-Win (Integrative)</strong></td>
+                        <td>Both sides cooperate to systematically expand the available value pool ("expand the pie") before executing any division. Focuses on shared interests and creative option generation.</td>
+                        <td>High voluntary commitment, stable long-term relationship health, and robust consensus.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Win-Lose (Distributive)</strong></td>
+                        <td>A competitive, zero-sum environment. One party's gain directly translates to the opposing party's loss. Focuses strictly on claims over a fixed asset pool.</td>
+                        <td>Adversarial friction, low trust, and a compromised underlying relationship.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lose-Lose</strong></td>
+                        <td>An avoidant or highly rigid approach where both parties prioritize denying the other's objectives over discovering functional options.</td>
+                        <td>Stalemate, severe resource waste, and complete breakdown of consensus.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Phases of the Negotiation Process</h3>
+            <ol>
+                <li><strong>Preparation:</strong> Research the other party's interests, define your explicit targets, and establish a firm BATNA.</li>
+                <li><strong>Exploration &amp; Discussion:</strong> Exchange structural data points, clarify core goals, and listen intently to discover hidden needs.</li>
+                <li><strong>Bargaining &amp; Trade-Offs:</strong> Float open trial balloons, utilize the reciprocity principle, and offer smart concessions to generate mutual gain.</li>
+                <li><strong>Agreement &amp; Implementation:</strong> Formulate specific, realistic, and completely documented commitments to finalize the deal.</li>
+            </ol>
+        </section>
+
+        <section id="topic6">
+            <h2>6. Employment Interviews</h2>
+            <p><strong>Definition &amp; Meaning:</strong> Derived from Latin and Middle French terms meaning to <em>"see between"</em> or <em>"see each other"</em>. An interview is a formal meeting with a defined objective. The employer's core goal is to determine three critical criteria: <em>Can you do the job? Will you do the job? How will you fit into the organization?</em></p>
+
+            <h3>The Preparation Checklist</h3>
+            <ul>
+                <li><strong>Due Diligence:</strong> Extensively research company operations, target market footprints, and organizational culture.</li>
+                <li><strong>Arrival Protocol:</strong> Arrive exactly <strong>10 to 15 minutes prior</strong> to the scheduled start time.</li>
+                <li><strong>Starting Protocol:</strong> Greet the interviewer with a firm, confident handshake, maintain excellent eye contact, use upright posture, and project energy and enthusiasm.</li>
+            </ul>
+
+            <h3>Key Hiring Factors Considered by Interviewers</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hiring Factor Metric</th>
+                        <th>Percentage Weight</th>
+                        <th>Strategic Focus for Candidates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Work Experience</strong></td>
+                        <td>36%</td>
+                        <td>Quantify past technical results and align them directly with the target role.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>First Impressions</strong></td>
+                        <td>24%</td>
+                        <td>Refine dress codes, professional posture, body language, and immediate energy.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Education</strong></td>
+                        <td>12%</td>
+                        <td>Highlight relevant academic focus areas and core functional projects.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Professional Qualifications</strong></td>
+                        <td>10%</td>
+                        <td>Showcase active industry certifications and specialized skill credentials.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>References</strong></td>
+                        <td>9%</td>
+                        <td>Provide trusted endorsements that validate your professional integrity.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Standard Interview Questions &amp; Graceful Exits</h3>
+            <div class="example-box">
+                <div class="bad-example" style="background-color: #f8fafc; border-color: var(--border-color);">
+                    <div class="example-header" style="color: var(--primary-color);">Standard Evaluation Questions</div>
+                    * Would you tell me about yourself?<br>
+                    * What is your greatest strength?<br>
+                    * What is your greatest weakness?<br>
+                    * Where do you see yourself in 5 years?<br>
+                    * Why should we hire you?
+                </div>
+                <div class="good-example" style="background-color: #f8fafc; border-color: var(--border-color);">
+                    <div class="example-header" style="color: var(--primary-color);">Questions You Should Ask</div>
+                    * What are your expectations of the employees in your company?<br>
+                    * Describe a typical day on the job in this position.<br>
+                    <span style="color: var(--danger-color); font-size: 0.85rem; font-weight: bold;">* Note: Avoid asking questions about salary and benefits early on.</span>
+                </div>
+            </div>
+
+            <blockquote>
+                <strong>The Graceful Exit &amp; Follow-Up Protocol:</strong><br>
+                Conclude the meeting explicitly with professional sign-offs: <em>"Thank you for your time. I appreciate it, and I will be looking forward to hearing from you."</em> Evaluators expect you to complete your review performance check and send a professional <strong>thank-you note within 24 hours</strong>.
+            </blockquote>
+        </section>
+    </main>
+
+</body>
+</html>
